@@ -24,7 +24,7 @@ class Sql_Deal:
         Cate_ID_list=[]
         Api_info_list=[]
         print Cate_ID_tup
-        Api_num = 5068
+        Api_num = 9000
         sum=0
         api_sum=0
         for i in Cate_ID_tup:
@@ -82,18 +82,30 @@ class Sql_Deal:
                         Process_Text=[]
                         #生成完整训练数据
                         #下列if语句对数组中元素进行判空，防止数组越界，并将最后结果按行保存到数组Process_Text中
+                        # if j[3]==None and j[5]==None:
+                        #     continue
+                        # elif j[3]!=None and j[5]==None:
+                        #     p=str(j[0])+':'+'['+str(j[3])+']'+str(j[1])+' '+str(j[2])+'\n'
+                        #     Process_Text.append(p)
+                        # elif j[3]==None and j[5]!=None:
+                        #     p=str(j[0])+':'+'['+str(j[5]).replace(',',' ')+']'+str(j[1])+' '+str(j[2])+'\n'
+                        #     Process_Text.append(p)
+                        # else:
+                        #     p=str(j[0])+':'+'['+str(j[3])+' '+str(j[5]).replace(',',' ')+']'+str(j[1])+' '+str(j[2])+'\n'
+                        #     Process_Text.append(p)
+                        # 生成无标签测试数据
                         if j[3]==None and j[5]==None:
-                            continue
+                             continue
                         elif j[3]!=None and j[5]==None:
-                            p=str(j[0])+':'+'['+str(j[3])+']'+str(j[1])+' '+str(j[2])+'\n'
+                            p=str(j[0])+':'+'['+']'+str(j[1])+' '+str(j[2])+'\n'
                             Process_Text.append(p)
                         elif j[3]==None and j[5]!=None:
-                            p=str(j[0])+':'+'['+str(j[5]).replace(',',' ')+']'+str(j[1])+' '+str(j[2])+'\n'
+                            p=str(j[0])+':'+'['+']'+str(j[1])+' '+str(j[2])+'\n'
                             Process_Text.append(p)
                         else:
-                            p=str(j[0])+':'+'['+str(j[3])+' '+str(j[5]).replace(',',' ')+']'+str(j[1])+' '+str(j[2])+'\n'
+                            p=str(j[0])+':'+'['+']'+str(j[1])+' '+str(j[2])+'\n'
                             Process_Text.append(p)
-                        fp = open('C:/Users/PSY/Desktop/result_test.txt', 'a+')
+                        fp = open('C:/Users/PSY/Desktop/test_set.txt', 'a+')
                         a_str = '\n'.join(map(lambda i: str(i), Process_Text))
                         fp.write(a_str)
                         fp.close()
