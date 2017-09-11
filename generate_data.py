@@ -8,7 +8,7 @@ from nltk.stem import PorterStemmer as ps
 class Sql_Deal:
     #类的构造函数，构造ps实例，定义mysql.connect实例
     def __init__(self):
-        self.conn = MySQLdb.connect(host='localhost', user='root', passwd='931011', db='backup', charset='utf8mb4')
+        self.conn = MySQLdb.connect(host='localhost', user='root', passwd='931011', db='database4', charset='utf8mb4')
         self.ps=ps()
         self.bar = progressbar.ProgressBar()
     #定义释放connect函数
@@ -18,13 +18,13 @@ class Sql_Deal:
     def write_arry(self):
         self.cur=self.conn.cursor()
         Cate_ID_Query='(select ID,Amount from `category` )'
-        Api_Query='(select *  from new )'
+        Api_Query='(select *  from new1 )'
         self.cur.execute(Cate_ID_Query)
         Cate_ID_tup = self.cur.fetchall()
         Cate_ID_list=[]
         Api_info_list=[]
         print Cate_ID_tup
-        Api_num = 9000
+        Api_num = 7800
         sum=0
         api_sum=0
         for i in Cate_ID_tup:
@@ -81,7 +81,7 @@ class Sql_Deal:
 
                         Process_Text=[]
                         #生成完整训练数据
-                        #下列if语句对数组中元素进行判空，防止数组越界，并将最后结果按行保存到数组Process_Text中
+                        # 下列if语句对数组中元素进行判空，防止数组越界，并将最后结果按行保存到数组Process_Text中
                         # if j[3]==None and j[5]==None:
                         #     continue
                         # elif j[3]!=None and j[5]==None:
